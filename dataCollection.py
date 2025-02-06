@@ -3,7 +3,7 @@ from PIL.ImageChops import offset
 from cvzone.HandTrackingModule import HandDetector
 
 cap = cv2.VideoCapture(0)
-detector = HandDetector(maxHands=1)
+detector = HandDetector(maxHands=2)
 offset = 20
 
 while True:
