@@ -1,8 +1,10 @@
 import cv2
+from PIL.ImageChops import offset
 from cvzone.HandTrackingModule import HandDetector
 
 cap = cv2.VideoCapture(0)
-detector = HandDetector(maxHands=8) # Maximum Hands Detected
+detector = HandDetector(maxHands=2)
+offset = 20
 
 while True:
     success, img = cap.read()
@@ -11,7 +13,7 @@ while True:
     if hands:
         hand = hands[0]
         x, y, w, h = hand['bbox']
-        imgCrop = img[y : y + h, x : x + w]
+        imgCrop = img[y - offset : y + h + offset, x : x + w]
         cv2.imshow("ImageCrop", imgCrop)
 
     cv2.imshow("Image", img)

@@ -1,0 +1,3 @@
+pip install mediapipe
+pip install cvzone
+pip install opencv
