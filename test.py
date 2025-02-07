@@ -3,6 +3,8 @@ from cvzone.HandTrackingModule import HandDetector
 from cvzone.ClassificationModule import Classifier
 import numpy as np
 import math
+import tensorflow as tf
+from tensorflow import keras
 import time
 
 cap = cv2.VideoCapture(0)
