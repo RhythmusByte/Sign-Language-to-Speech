@@ -1,3 +1,5 @@
 pip install mediapipe
 pip install cvzone
 pip install opencv
+pip install numpy
+pip install tensorflow
