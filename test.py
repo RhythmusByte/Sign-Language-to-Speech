@@ -20,7 +20,7 @@ imgSize = 300
 # Read labels from file
 with open(labels_path, 'r') as file:
     labels = [line.strip() for line in file.readlines()]
-print("Available labels:", labels)  # This will show us what labels the model knows
+print("Available labels:", labels)
 
 while True:
     success, img = cap.read()
@@ -66,7 +66,7 @@ while True:
                 imgWhite[hGap:hCal + hGap, :] = imgResize
 
             cv2.imshow("ImageCrop", imgCrop)
-            cv2.imshow("ImageWhite", imgWhiteGray)  # Show the grayscale image being fed to model
+            cv2.imshow("ImageWhite", imgWhiteGray)
 
         except Exception as e:
             print(f"Error processing image: {e}")
@@ -74,7 +74,7 @@ while True:
     cv2.imshow("Image", img)
     key = cv2.waitKey(1)
 
-    if key == 27:  # ESC key
+    if key == 27:
         break
 
 cap.release()
