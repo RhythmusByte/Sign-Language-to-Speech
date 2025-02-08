@@ -17,12 +17,10 @@ classifier = Classifier(model_path, labels_path)
 offset = 20
 imgSize = 300
 
-folder = 'Data/C'
-counter = 0
-
+# Read labels from file
 with open(labels_path, 'r') as file:
     labels = [line.strip() for line in file.readlines()]
-print("Available labels:", labels)
+print("Available labels:", labels)  # This will show us what labels the model knows
 
 while True:
     success, img = cap.read()
@@ -33,36 +31,45 @@ while True:
         x, y, w, h = hand['bbox']
         imgWhite = np.ones((imgSize, imgSize, 3), np.uint8) * 255
 
-        imgCrop = img[y - offset: y + h + offset, x - offset: x + w + offset]
+        try:
+            imgCrop = img[y - offset: y + h + offset, x - offset: x + w + offset]
+            aspectRatio = h / w
 
-        aspectRatio = h / w
+            if aspectRatio > 1:
+                k = imgSize / h
+                wCal = math.ceil(k * w)
+                imgResize = cv2.resize(imgCrop, (wCal, imgSize))
+                wGap = math.ceil(((imgSize - wCal) / 2))
+                imgWhite[:, wGap:wCal + wGap] = imgResize
 
-        if aspectRatio > 1:
-            k = imgSize / h
-            wCal = math.ceil(k * w)
-            imgResize = cv2.resize(imgCrop, (wCal, imgSize))
-            imgResizeShape = imgResize.shape
-            wGap = math.ceil(((imgSize - wCal) / 2))
-            imgWhite[:, wGap:wCal + wGap] = imgResize
-            prediction, index = classifier.getPrediction(imgWhite)
-            print(prediction, index)
+                # Convert to grayscale
+                imgWhiteGray = cv2.cvtColor(imgWhite, cv2.COLOR_BGR2GRAY)
+                imgWhiteGray = cv2.cvtColor(imgWhiteGray, cv2.COLOR_GRAY2BGR)
 
-            predicted_label = labels[index]
-            confidence = prediction[index]
-            cv2.putText(img, f'{predicted_label} ({confidence:.2f}%)',
-                        (x, y - 20), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 0, 255), 2)
-            print(f"Predicted: {predicted_label} with confidence: {confidence:.2f}%")
+                prediction, index = classifier.getPrediction(imgWhiteGray)
 
-        else:
-            k = imgSize / w
-            hCal = math.ceil(k * h)
-            imgResize = cv2.resize(imgCrop, (imgSize, hCal))
-            imgResizeShape = imgResize.shape
-            hGap = math.ceil(((imgSize - hCal) / 2))
-            imgWhite[hGap:hCal + hGap, :] = imgResize
+                # Print all prediction probabilities
+                print("\nPrediction probabilities:")
+                for i, (label, prob) in enumerate(zip(labels, prediction)):
+                    print(f"{label}: {prob:.2f}%")
 
-        cv2.imshow("ImageCrop", imgCrop)
-        cv2.imshow("ImageWhite", imgWhite)
+                predicted_label = labels[index]
+                confidence = prediction[index]
+                cv2.putText(img, f'{predicted_label} ({confidence:.2f}%)',
+                            (x, y - 20), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 0, 255), 2)
+
+            else:
+                k = imgSize / w
+                hCal = math.ceil(k * h)
+                imgResize = cv2.resize(imgCrop, (imgSize, hCal))
+                hGap = math.ceil(((imgSize - hCal) / 2))
+                imgWhite[hGap:hCal + hGap, :] = imgResize
+
+            cv2.imshow("ImageCrop", imgCrop)
+            cv2.imshow("ImageWhite", imgWhiteGray)  # Show the grayscale image being fed to model
+
+        except Exception as e:
+            print(f"Error processing image: {e}")
 
     cv2.imshow("Image", img)
     key = cv2.waitKey(1)
