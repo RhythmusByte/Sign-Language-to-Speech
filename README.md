@@ -1,6 +1,6 @@
-# ASL to Text Interpreter 🤟
+# Sign Langauge to Speech Conversion 
 
-Real-time ASL interpreter using OpenCV and TensorFlow/Keras for hand gesture recognition. Features custom hand tracking, image preprocessing, and gesture classification to translate American Sign Language into text output. Built with accessibility in mind.
+Real-time American Sign Langauge to Speech Conversion using OpenCV and TensorFlow/Keras for hand gesture recognition. Features custom hand tracking, image preprocessing, and gesture classification to translate American Sign Language into text output. Built with accessibility in mind.
 
 > ⚠️ **Note:** This project is currently under development.
 
@@ -21,12 +21,12 @@ Real-time ASL interpreter using OpenCV and TensorFlow/Keras for hand gesture rec
 
 ## Project Structure
 
-```
-asl-to-text/
+```text
+project /
 │
 ├── Application.py 
 ├── dataCollection.py
-├── data
+├── data 
 ├── model/             
 │   ├── keras_model.h5  
 │   └── labels.txt     
@@ -39,9 +39,9 @@ asl-to-text/
 - Text-to-speech functionality
 - Expanded gesture vocabulary
 - Improved model accuracy
+- Support for word prediction
 - Support for continuous sentence formation
 - GUI interface
-- Multiple hand gesture support
 
 ## Development Status
 
@@ -49,13 +49,12 @@ This project is in active development. Current focus areas:
 - Improving hand tracking accuracy
 - Expanding the gesture recognition dataset
 - Enhancing real-time performance
-- Building out the core classification system
 
 ## Requirements
 
-- Python 3.8 or higher
-- Webcam or camera device
-- Key packages: opencv-python, tensorflow, numpy, cvzone
+- Python 3.9 or higher
+- Webcam or camera device (laptop)
+- Key packages: opencv-python, tensorflow, numpy, cvzone, mediapipe
 
 ---
 *More documentation will be added as the project develops.*
