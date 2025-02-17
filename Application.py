@@ -1,26 +1,32 @@
 import cv2
 from cvzone.HandTrackingModule import HandDetector
-from cvzone.ClassificationModule import Classifier
 import numpy as np
 import math
 import os
+import tensorflow as tf
 
 # Get absolute paths
 current_dir = os.path.dirname(os.path.abspath(__file__))
-model_path = os.path.join(current_dir, "model", "keras_model.h5")
+model_path = os.path.join(current_dir, "model", "keras_model.keras")
 labels_path = os.path.join(current_dir, "model", "labels.txt")
 
 cap = cv2.VideoCapture(0)
 detector = HandDetector(maxHands=1)
-classifier = Classifier(model_path, labels_path)
+
+# Load the Keras model
+model = tf.keras.models.load_model(model_path)
 
 offset = 20
-imgSize = 300
+imgSize = 200  # Changed to match the training data size (200x200)
 
 # Read labels from file
 with open(labels_path, 'r') as file:
     labels = [line.strip() for line in file.readlines()]
 print("Available labels:", labels)
+
+# Check if we have all 29 classes
+if len(labels) != 29:
+    print(f"Warning: Expected 29 classes (A-Z, SPACE, DELETE, NOTHING), but found {len(labels)}")
 
 while True:
     success, img = cap.read()
@@ -41,23 +47,6 @@ while True:
                 imgResize = cv2.resize(imgCrop, (wCal, imgSize))
                 wGap = math.ceil(((imgSize - wCal) / 2))
                 imgWhite[:, wGap:wCal + wGap] = imgResize
-
-                # Convert to grayscale
-                imgWhiteGray = cv2.cvtColor(imgWhite, cv2.COLOR_BGR2GRAY)
-                imgWhiteGray = cv2.cvtColor(imgWhiteGray, cv2.COLOR_GRAY2BGR)
-
-                prediction, index = classifier.getPrediction(imgWhiteGray)
-
-                # Print all prediction probabilities
-                # print("\nPrediction probabilities:")
-                # for i, (label, prob) in enumerate(zip(labels, prediction)):
-                #     print(f"{label}: {prob:.2f}%")
-
-                predicted_label = labels[index]
-                confidence = prediction[index]
-                cv2.putText(img, f'{predicted_label} ({confidence:.2f}%)',
-                            (x, y - 20), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 0, 255), 2)
-
             else:
                 k = imgSize / w
                 hCal = math.ceil(k * h)
@@ -65,8 +54,33 @@ while True:
                 hGap = math.ceil(((imgSize - hCal) / 2))
                 imgWhite[hGap:hCal + hGap, :] = imgResize
 
+            # Preprocess the image for TensorFlow - using 200x200 dimensions
+            preprocessed_img = imgWhite.copy()
+            preprocessed_img = preprocessed_img / 255.0  # Normalize pixel values
+            preprocessed_img = np.expand_dims(preprocessed_img, axis=0)  # Add batch dimension
+
+            # Get prediction
+            prediction = model.predict(preprocessed_img)[0]
+            index = np.argmax(prediction)
+
+            predicted_label = labels[index]
+            confidence = prediction[index] * 100  # Convert to percentage
+            
+            # Display special messages for non-letter classes
+            if predicted_label == "SPACE":
+                display_text = "SPACE"
+            elif predicted_label == "DELETE":
+                display_text = "DELETE"
+            elif predicted_label == "NOTHING":
+                display_text = "NOTHING"
+            else:
+                display_text = predicted_label
+                
+            cv2.putText(img, f'{display_text} ({confidence:.2f}%)',
+                        (x, y - 20), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 0, 255), 2)
+
             cv2.imshow("ImageCrop", imgCrop)
-            cv2.imshow("ImageWhite", imgWhiteGray)
+            cv2.imshow("ImageWhite", imgWhite)
 
         except Exception as e:
             print(f"Error processing image: {e}")
