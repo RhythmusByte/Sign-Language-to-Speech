@@ -1,4 +1,4 @@
-# Sign Langauge to Speech Conversion 
+# Sign Langauge to Speech Conversion
 
 Real-time American Sign Langauge to Speech Conversion using OpenCV and TensorFlow/Keras for hand gesture recognition. Features custom hand tracking, image preprocessing, and gesture classification to translate American Sign Language into text output. Built with accessibility in mind.
 
@@ -24,14 +24,13 @@ Real-time American Sign Langauge to Speech Conversion using OpenCV and TensorFlo
 ```text
 project /
 │
-├── Application.py 
-├── dataCollection.py
-├── data 
-├── model/             
-│   ├── keras_model.h5  
-│   └── labels.txt     
+├── Application.py
+├── data/
+├── model/
+│   ├── keras_model.h5
+│   └── labels.txt
 ├── README.md
-└── requirements.txt     
+└── requirements.txt
 ```
 
 ## Planned Features
@@ -46,6 +45,7 @@ project /
 ## Development Status
 
 This project is in active development. Current focus areas:
+
 - Improving hand tracking accuracy
 - Expanding the gesture recognition dataset
 - Enhancing real-time performance
@@ -57,4 +57,5 @@ This project is in active development. Current focus areas:
 - Key packages: opencv-python, tensorflow, numpy, cvzone, mediapipe
 
 ---
-*More documentation will be added as the project develops.*
+
+_More documentation will be added as the project develops._
