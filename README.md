@@ -26,21 +26,19 @@ project /
 │
 ├── Application.py
 ├── data/
-├── model/
-│   ├── keras_model.h5
-│   └── labels.txt
+├── trainedModel.h5
+├── GUI.py
 ├── README.md
 └── requirements.txt
 ```
 
-## Planned Features
+## Features
 
-- Text-to-speech functionality
-- Expanded gesture vocabulary
-- Improved model accuracy
-- Support for word prediction
-- Support for continuous sentence formation
-- GUI interface
+- Real-time gesture recognision
+- Image processing
+- Gesture classification
+- Text output
+- Speech Output
 
 ## Development Status
 
