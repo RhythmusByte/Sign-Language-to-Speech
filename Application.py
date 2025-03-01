@@ -1,4 +1,3 @@
-# Importing Libraries
 import numpy as np
 import math
 import cv2
@@ -18,11 +17,7 @@ from PIL import Image, ImageTk
 
 offset=29
 
-
 os.environ["THEANO_FLAGS"] = "device=cuda, assert_no_cpu_op=True"
-
-
-# Application :
 
 class Application:
 
@@ -46,45 +41,42 @@ class Application:
         for i in range(10):
             self.ten_prev_char.append(" ")
 
-
         for i in ascii_uppercase:
             self.ct[i] = 0
         print("Loaded model from disk")
 
-
         self.root = tk.Tk()
-        self.root.title("Sign Language To Text Conversion")
+        self.root.title("Sign Language To Speech Conversion")
         self.root.protocol('WM_DELETE_WINDOW', self.destructor)
         self.root.geometry("1300x700")
 
         self.panel = tk.Label(self.root)
         self.panel.place(x=100, y=3, width=480, height=640)
 
-        self.panel2 = tk.Label(self.root)  # initialize image panel
+        self.panel2 = tk.Label(self.root) 
         self.panel2.place(x=700, y=115, width=400, height=400)
 
         self.T = tk.Label(self.root)
         self.T.place(x=60, y=5)
-        self.T.config(text="Sign Language To Speech Conversion", font=("Poppins", 30, "bold"))
+        self.T.config(text="Sign Language To Speech Conversion", font=("Josefin Sans", 30, "bold"))
 
-        self.panel3 = tk.Label(self.root)  # Current Symbol
+        self.panel3 = tk.Label(self.root)
         self.panel3.place(x=280, y=585)
 
         self.T1 = tk.Label(self.root)
         self.T1.place(x=10, y=580)
-        self.T1.config(text="Character :", font=("Poppins", 30, "bold"))
+        self.T1.config(text="Character :", font=("Josefin Sans", 30, "bold"))
 
-        self.panel5 = tk.Label(self.root)  # Sentence
+        self.panel5 = tk.Label(self.root) 
         self.panel5.place(x=260, y=632)
 
         self.T3 = tk.Label(self.root)
         self.T3.place(x=10, y=632)
-        self.T3.config(text="Sentence :", font=("Poppins", 30, "bold"))
+        self.T3.config(text="Sentence :", font=("Josefin Sans", 30, "bold"))
 
         self.T4 = tk.Label(self.root)
         self.T4.place(x=10, y=700)
-        self.T4.config(text="Suggestions :", fg="red", font=("Poppins", 30, "bold"))
-
+        self.T4.config(text="Suggestions :", fg="red", font=("Josefin Sans", 30, "bold"))
 
         self.b1=tk.Button(self.root)
         self.b1.place(x=390,y=700)
@@ -100,22 +92,17 @@ class Application:
 
         self.speak = tk.Button(self.root)
         self.speak.place(x=1305, y=630)
-        self.speak.config(text="Voice", font=("Poppins", 20), wraplength=100, command=self.speak_fun)
+        self.speak.config(text="Voice", font=("Josefin Sans", 20), wraplength=100, command=self.speak_fun)
 
         self.clear = tk.Button(self.root)
         self.clear.place(x=1205, y=630)
-        self.clear.config(text="Clear", font=("Poppins", 20), wraplength=100, command=self.clear_fun)
-
-
-
-
+        self.clear.config(text="Clear", font=("Josefin Sans", 20), wraplength=100, command=self.clear_fun)
 
         self.str = " "
         self.ccc=0
         self.word = " "
         self.current_symbol = "C"
         self.photo = "Empty"
-
 
         self.word1=" "
         self.word2 = " "
@@ -144,7 +131,6 @@ class Application:
                     image = cv2image_copy[y - offset:y + h + offset, x - offset:x + w + offset]
 
                     white = cv2.imread("white.jpg")
-                    # img_final=img_final1=img_final2=0
                     if image.all:
                         handz = hd2.findHands(image, draw=False, flipType=True)
                         self.ccc += 1
@@ -152,7 +138,6 @@ class Application:
                             hand = handz[0]
                             handmap=hand[0]
                             self.pts = handmap['lmList']
-                            # x1,y1,w1,h1=hand['bbox']
 
                             os = ((400 - w) // 2) - 15
                             os1 = ((400 - h) // 2) - 15
@@ -195,18 +180,14 @@ class Application:
                             self.panel2.imgtk = imgtk
                             self.panel2.config(image=imgtk)
 
-                            self.panel3.config(text=self.current_symbol, font=("Courier", 30))
+                            self.panel3.config(text=self.current_symbol, font=("Josefin Sans", 30))
 
-                            #self.panel4.config(text=self.word, font=("Courier", 30))
+                            self.b1.config(text=self.word1, font=("Josefin Sans", 20), wraplength=825, command=self.action1)
+                            self.b2.config(text=self.word2, font=("Josefin Sans", 20), wraplength=825,  command=self.action2)
+                            self.b3.config(text=self.word3, font=("Josefin Sans", 20), wraplength=825,  command=self.action3)
+                            self.b4.config(text=self.word4, font=("Josefin Sans", 20), wraplength=825,  command=self.action4)
 
-
-
-                            self.b1.config(text=self.word1, font=("Courier", 20), wraplength=825, command=self.action1)
-                            self.b2.config(text=self.word2, font=("Courier", 20), wraplength=825,  command=self.action2)
-                            self.b3.config(text=self.word3, font=("Courier", 20), wraplength=825,  command=self.action3)
-                            self.b4.config(text=self.word4, font=("Courier", 20), wraplength=825,  command=self.action4)
-
-                self.panel5.config(text=self.str, font=("Courier", 30), wraplength=1025)
+                self.panel5.config(text=self.str, font=("Josefin Sans", 30), wraplength=1025)
         except Exception:
             print(Exception.__traceback__)
             hands = hd.findHands(cv2image, draw=False, flipType=True)
@@ -218,13 +199,11 @@ class Application:
             self.panel.config(image=imgtk)
 
             if hands:
-                # #print(" --------- lmlist=",hands[1])
                 hand = hands[0]
                 x, y, w, h = hand['bbox']
                 image = cv2image_copy[y - offset:y + h + offset, x - offset:x + w + offset]
 
-                white = cv2.imread("C:\\Users\\devansh raval\\PycharmProjects\\pythonProject\\white.jpg")
-                # img_final=img_final1=img_final2=0
+                white = cv2.imread(".\white.jpg")
 
                 handz = hd2.findHands(image, draw=False, flipType=True)
                 print(" ", self.ccc)
@@ -232,7 +211,6 @@ class Application:
                 if handz:
                     hand = handz[0]
                     self.pts = hand['lmList']
-                    # x1,y1,w1,h1=hand['bbox']
 
                     os = ((400 - w) // 2) - 15
                     os1 = ((400 - h) // 2) - 15
@@ -275,18 +253,14 @@ class Application:
                     self.panel2.imgtk = imgtk
                     self.panel2.config(image=imgtk)
 
-                    self.panel3.config(text=self.current_symbol, font=("Courier", 30))
+                    self.panel3.config(text=self.current_symbol, font=("Josefin Sans", 30))
 
-                    #self.panel4.config(text=self.word, font=("Courier", 30))
+                    self.b1.config(text=self.word1, font=("Josefin Sans", 20), wraplength=825, command=self.action1)
+                    self.b2.config(text=self.word2, font=("Josefin Sans", 20), wraplength=825,  command=self.action2)
+                    self.b3.config(text=self.word3, font=("Josefin Sans", 20), wraplength=825,  command=self.action3)
+                    self.b4.config(text=self.word4, font=("Josefin Sans", 20), wraplength=825,  command=self.action4)
 
-
-
-                    self.b1.config(text=self.word1, font=("Courier", 20), wraplength=825, command=self.action1)
-                    self.b2.config(text=self.word2, font=("Courier", 20), wraplength=825,  command=self.action2)
-                    self.b3.config(text=self.word3, font=("Courier", 20), wraplength=825,  command=self.action3)
-                    self.b4.config(text=self.word4, font=("Courier", 20), wraplength=825,  command=self.action4)
-
-            self.panel5.config(text=self.str, font=("Courier", 30), wraplength=1025)
+            self.panel5.config(text=self.str, font=("Josefin Sans", 30), wraplength=1025)
         except Exception:
             print("==", traceback.format_exc())
         finally:
@@ -301,25 +275,20 @@ class Application:
         last_idx = len(self.str)
         self.str = self.str[:idx_word]
         self.str = self.str + self.word1.upper()
-
-
+        
     def action2(self):
         idx_space = self.str.rfind(" ")
         idx_word = self.str.find(self.word, idx_space)
         last_idx = len(self.str)
         self.str=self.str[:idx_word]
         self.str=self.str+self.word2.upper()
-        #self.str[idx_word:last_idx] = self.word2
-
-
+        
     def action3(self):
         idx_space = self.str.rfind(" ")
         idx_word = self.str.find(self.word, idx_space)
         last_idx = len(self.str)
         self.str = self.str[:idx_word]
         self.str = self.str + self.word3.upper()
-
-
 
     def action4(self):
         idx_space = self.str.rfind(" ")
@@ -328,12 +297,10 @@ class Application:
         self.str = self.str[:idx_word]
         self.str = self.str + self.word4.upper()
 
-
     def speak_fun(self):
         self.speak_engine.say(self.str)
         self.speak_engine.runAndWait()
-
-
+        
     def clear_fun(self):
         self.str=" "
         self.word1 = " "
@@ -354,7 +321,6 @@ class Application:
 
         pl = [ch1, ch2]
 
-        # condition for [Aemnst]
         l = [[5, 2], [5, 3], [3, 5], [3, 6], [3, 0], [3, 2], [6, 4], [6, 1], [6, 2], [6, 6], [6, 7], [6, 0], [6, 5],
              [4, 1], [1, 0], [1, 1], [6, 3], [1, 6], [5, 6], [5, 1], [4, 5], [1, 4], [1, 5], [2, 0], [2, 6], [4, 6],
              [1, 0], [5, 7], [1, 6], [6, 1], [7, 6], [2, 5], [7, 1], [5, 4], [7, 0], [7, 5], [7, 2]]
@@ -363,15 +329,11 @@ class Application:
                 1]):
                 ch1 = 0
 
-        # condition for [o][s]
         l = [[2, 2], [2, 1]]
         if pl in l:
             if (self.pts[5][0] < self.pts[4][0]):
                 ch1 = 0
                 print("++++++++++++++++++")
-                # print("00000")
-
-        # condition for [c0][aemnst]
         l = [[0, 0], [0, 6], [0, 2], [0, 5], [0, 1], [0, 7], [5, 2], [7, 6], [7, 1]]
         pl = [ch1, ch2]
         if pl in l:
@@ -379,15 +341,12 @@ class Application:
                 0] and self.pts[0][0] > self.pts[20][0]) and self.pts[5][0] > self.pts[4][0]:
                 ch1 = 2
 
-        # condition for [c0][aemnst]
         l = [[6, 0], [6, 6], [6, 2]]
         pl = [ch1, ch2]
         if pl in l:
             if self.distance(self.pts[8], self.pts[16]) < 52:
                 ch1 = 2
 
-
-        # condition for [gh][bdfikruvw]
         l = [[1, 4], [1, 5], [1, 6], [1, 3], [1, 0]]
         pl = [ch1, ch2]
 
@@ -396,30 +355,24 @@ class Application:
                 0] and self.pts[0][0] < self.pts[12][0] and self.pts[0][0] < self.pts[16][0] and self.pts[0][0] < self.pts[20][0]:
                 ch1 = 3
 
-
-
-        # con for [gh][l]
         l = [[4, 6], [4, 1], [4, 5], [4, 3], [4, 7]]
         pl = [ch1, ch2]
         if pl in l:
             if self.pts[4][0] > self.pts[0][0]:
                 ch1 = 3
 
-        # con for [gh][pqz]
         l = [[5, 3], [5, 0], [5, 7], [5, 4], [5, 2], [5, 1], [5, 5]]
         pl = [ch1, ch2]
         if pl in l:
             if self.pts[2][1] + 15 < self.pts[16][1]:
                 ch1 = 3
 
-        # con for [l][x]
         l = [[6, 4], [6, 1], [6, 2]]
         pl = [ch1, ch2]
         if pl in l:
             if self.distance(self.pts[4], self.pts[11]) > 55:
                 ch1 = 4
 
-        # con for [l][d]
         l = [[1, 4], [1, 6], [1, 1]]
         pl = [ch1, ch2]
         if pl in l:
@@ -428,28 +381,24 @@ class Application:
                     self.pts[20][1]):
                 ch1 = 4
 
-        # con for [l][gh]
         l = [[3, 6], [3, 4]]
         pl = [ch1, ch2]
         if pl in l:
             if (self.pts[4][0] < self.pts[0][0]):
                 ch1 = 4
-
-        # con for [l][c0]
+                
         l = [[2, 2], [2, 5], [2, 4]]
         pl = [ch1, ch2]
         if pl in l:
             if (self.pts[1][0] < self.pts[12][0]):
                 ch1 = 4
 
-        # con for [l][c0]
         l = [[2, 2], [2, 5], [2, 4]]
         pl = [ch1, ch2]
         if pl in l:
             if (self.pts[1][0] < self.pts[12][0]):
                 ch1 = 4
 
-        # con for [gh][z]
         l = [[3, 6], [3, 5], [3, 4]]
         pl = [ch1, ch2]
         if pl in l:
@@ -457,7 +406,6 @@ class Application:
                 1]) and self.pts[4][1] > self.pts[10][1]:
                 ch1 = 5
 
-        # con for [gh][pq]
         l = [[3, 2], [3, 1], [3, 6]]
         pl = [ch1, ch2]
         if pl in l:
@@ -465,50 +413,42 @@ class Application:
                 1] + 17 > self.pts[20][1]:
                 ch1 = 5
 
-        # con for [l][pqz]
         l = [[4, 4], [4, 5], [4, 2], [7, 5], [7, 6], [7, 0]]
         pl = [ch1, ch2]
         if pl in l:
             if self.pts[4][0] > self.pts[0][0]:
                 ch1 = 5
 
-        # con for [pqz][aemnst]
         l = [[0, 2], [0, 6], [0, 1], [0, 5], [0, 0], [0, 7], [0, 4], [0, 3], [2, 7]]
         pl = [ch1, ch2]
         if pl in l:
             if self.pts[0][0] < self.pts[8][0] and self.pts[0][0] < self.pts[12][0] and self.pts[0][0] < self.pts[16][0] and self.pts[0][0] < self.pts[20][0]:
                 ch1 = 5
 
-        # con for [pqz][yj]
         l = [[5, 7], [5, 2], [5, 6]]
         pl = [ch1, ch2]
         if pl in l:
             if self.pts[3][0] < self.pts[0][0]:
                 ch1 = 7
 
-        # con for [l][yj]
         l = [[4, 6], [4, 2], [4, 4], [4, 1], [4, 5], [4, 7]]
         pl = [ch1, ch2]
         if pl in l:
             if self.pts[6][1] < self.pts[8][1]:
                 ch1 = 7
 
-        # con for [x][yj]
         l = [[6, 7], [0, 7], [0, 1], [0, 0], [6, 4], [6, 6], [6, 5], [6, 1]]
         pl = [ch1, ch2]
         if pl in l:
             if self.pts[18][1] > self.pts[20][1]:
                 ch1 = 7
 
-        # condition for [x][aemnst]
         l = [[0, 4], [0, 2], [0, 3], [0, 1], [0, 6]]
         pl = [ch1, ch2]
         if pl in l:
             if self.pts[5][0] > self.pts[16][0]:
                 ch1 = 6
 
-
-        # condition for [yj][x]
         print("2222  ch1=+++++++++++++++++", ch1, ",", ch2)
         l = [[7, 2]]
         pl = [ch1, ch2]
@@ -516,14 +456,11 @@ class Application:
             if self.pts[18][1] < self.pts[20][1] and self.pts[8][1] < self.pts[10][1]:
                 ch1 = 6
 
-        # condition for [c0][x]
         l = [[2, 1], [2, 2], [2, 6], [2, 7], [2, 0]]
         pl = [ch1, ch2]
         if pl in l:
             if self.distance(self.pts[8], self.pts[16]) > 50:
                 ch1 = 6
-
-        # con for [l][x]
 
         l = [[4, 6], [4, 2], [4, 1], [4, 4]]
         pl = [ch1, ch2]
@@ -531,14 +468,12 @@ class Application:
             if self.distance(self.pts[4], self.pts[11]) < 60:
                 ch1 = 6
 
-        # con for [x][d]
         l = [[1, 4], [1, 6], [1, 0], [1, 2]]
         pl = [ch1, ch2]
         if pl in l:
             if self.pts[5][0] - self.pts[4][0] - 15 > 0:
                 ch1 = 6
 
-        # con for [b][pqz]
         l = [[5, 0], [5, 1], [5, 4], [5, 5], [5, 6], [6, 1], [7, 6], [0, 2], [7, 1], [7, 4], [6, 6], [7, 2], [5, 0],
              [6, 3], [6, 4], [7, 5], [7, 2]]
         pl = [ch1, ch2]
@@ -547,7 +482,6 @@ class Application:
                 1]):
                 ch1 = 1
 
-        # con for [f][pqz]
         l = [[6, 1], [6, 0], [0, 3], [6, 4], [2, 2], [0, 6], [6, 2], [7, 6], [4, 6], [4, 1], [4, 2], [0, 2], [7, 1],
              [7, 4], [6, 6], [7, 2], [7, 5], [7, 2]]
         pl = [ch1, ch2]
@@ -563,9 +497,7 @@ class Application:
                     self.pts[18][1] > self.pts[20][1]):
                 ch1 = 1
 
-        # con for [d][pqz]
         fg = 19
-        # print("_________________ch1=",ch1," ch2=",ch2)
         l = [[5, 0], [3, 4], [3, 0], [3, 1], [3, 5], [5, 5], [5, 4], [5, 1], [7, 6]]
         pl = [ch1, ch2]
         if pl in l:
@@ -594,7 +526,6 @@ class Application:
             if self.pts[5][0] - self.pts[4][0] - 15 < 0:
                 ch1 = 1
 
-        # con for [i][pqz]
         l = [[5, 4], [5, 5], [5, 1], [0, 3], [0, 7], [5, 0], [0, 2], [6, 2], [7, 5], [7, 1], [7, 6], [7, 7]]
         pl = [ch1, ch2]
         if pl in l:
@@ -602,7 +533,6 @@ class Application:
                  self.pts[18][1] > self.pts[20][1])):
                 ch1 = 1
 
-        # con for [yj][bfdi]
         l = [[1, 5], [1, 7], [1, 1], [1, 6], [1, 3], [1, 0]]
         pl = [ch1, ch2]
         if pl in l:
@@ -611,7 +541,6 @@ class Application:
              self.pts[18][1] > self.pts[20][1])):
                 ch1 = 7
 
-        # con for [uvr]
         l = [[5, 5], [5, 0], [5, 4], [5, 1], [4, 6], [4, 1], [7, 6], [3, 0], [3, 5]]
         pl = [ch1, ch2]
         if pl in l:
@@ -619,7 +548,6 @@ class Application:
                  self.pts[18][1] < self.pts[20][1])) and self.pts[4][1] > self.pts[14][1]:
                 ch1 = 1
 
-        # con for [w]
         fg = 13
         l = [[3, 5], [3, 0], [3, 6], [5, 1], [4, 1], [2, 0], [5, 0], [5, 5]]
         pl = [ch1, ch2]
@@ -630,18 +558,12 @@ class Application:
                 0]) and self.distance(self.pts[4], self.pts[11]) < 50:
                 ch1 = 1
 
-        # con for [w]
-
         l = [[5, 0], [5, 5], [0, 1]]
         pl = [ch1, ch2]
         if pl in l:
             if self.pts[6][1] > self.pts[8][1] and self.pts[10][1] > self.pts[12][1] and self.pts[14][1] > self.pts[16][1]:
                 ch1 = 1
 
-        # -------------------------condn for 8 groups  ends
-
-        # -------------------------condn for subgroups  starts
-        #
         if ch1 == 0:
             ch1 = 'S'
             if self.pts[4][0] < self.pts[6][0] and self.pts[4][0] < self.pts[10][0] and self.pts[4][0] < self.pts[14][0] and self.pts[4][0] < self.pts[18][0]:
