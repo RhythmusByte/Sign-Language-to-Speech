@@ -1,15 +1,15 @@
-# Sign Langauge to Speech Conversion
+# Sign Language to Speech Conversion
 
-Real-time American Sign Langauge to Speech Conversion using OpenCV and TensorFlow/Keras for hand gesture recognition. Features custom hand tracking, image preprocessing, and gesture classification to translate American Sign Language into text output. Built with accessibility in mind.
+This project focuses on real-time American Sign Language (ASL) to speech conversion, leveraging OpenCV and TensorFlow/Keras for hand gesture recognition. The application incorporates custom hand tracking, image preprocessing, and gesture classification to translate ASL into both text and speech output, with accessibility in mind.
 
 > ⚠️ **Note:** This project is currently under development.
 
-## Features in Development
+## Features
 
 - Real-time hand gesture detection and tracking
 - Image preprocessing pipeline
 - Machine learning-based gesture classification
-- Support for basic ASL gestures (only letters)
+- Support for basic ASL gestures (letters A-Z)
 
 ## Technical Stack
 
@@ -18,42 +18,71 @@ Real-time American Sign Langauge to Speech Conversion using OpenCV and TensorFlo
 - TensorFlow/Keras (Machine Learning)
 - cvzone (Hand Tracking)
 - NumPy (Numerical Processing)
+- pyttsx3 (Text-to-Speech)
 
 ## Project Structure
 
 ```text
 project /
 │
-├── Application.py
 ├── data/
-├── trainedModel.h5
-├── GUI.py
+├── Application.py
 ├── README.md
-└── requirements.txt
+├── requirements.txt
+├── trainedModel.h5
+└── white.jpg
 ```
 
-## Features
+- **Application.py**: Main Python script that runs the application.
+- **trainedModel.h5**: The trained model for gesture classification.
+- **requirements.txt**: List of dependencies needed to run the project.
+- **white.jpg**: Background image.
 
-- Real-time gesture recognision
-- Image processing
-- Gesture classification
-- Text output
-- Speech Output
+## Features in Development
+
+- Real-time gesture recognition
+- Image processing pipeline for gesture analysis
+- Gesture classification with TensorFlow/Keras
+- Text and speech output for gesture translation
 
 ## Development Status
 
-This project is in active development. Current focus areas:
+This project is in active development. The current focus is on:
 
-- Improving hand tracking accuracy
-- Expanding the gesture recognition dataset
-- Enhancing real-time performance
+- Improving hand tracking accuracy.
+- Expanding the gesture recognition dataset.
+- Enhancing real-time performance.
 
 ## Requirements
 
-- Python 3.9 or higher
-- Webcam or camera device (laptop)
-- Key packages: opencv-python, tensorflow, numpy, cvzone, mediapipe
+To run this project, you need Python 3.9 or higher. Install the necessary dependencies by running:
+
+```bash
+pip install -r requirements.txt
+```
+
+Key packages required:
+
+- opencv-python
+- tensorflow
+- numpy
+- cvzone
+- pyttsx3
+
+## Usage
+
+To run the application, execute the following:
+
+```bash
+python Application.py
+```
+
+This will launch the gesture recognition system using your webcam or camera device and convert recognized gestures into text and speech output.
+
+## Future Improvements
+
+- Expand support for more ASL gestures.
+- Optimize performance for faster recognition.
+- Improve model accuracy with additional training data.
 
 ---
-
-_More documentation will be added as the project develops._
