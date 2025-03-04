@@ -6,5 +6,3 @@ pillow==11.1.0
 pyenchant==3.2.2
 pyttsx3==2.98
 tensorflow==2.18.0
-tensorflow_intel==2.18.0
-tensorflow-io-gcs-filesystem==0.31.0
