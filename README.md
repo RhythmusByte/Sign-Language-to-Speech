@@ -4,36 +4,6 @@ This project focuses on real-time American Sign Language (ASL) to speech convers
 
 > ⚠️ **Note:** This project is currently under development.
 
-## Installation & Setup
-
-### 1️⃣ Clone the Repository
-```bash
-git clone https://github.com/RhythmusByte/Sign-Language-to-Speech.git
-cd sign-language-to-speech
-```
-
-### 2️⃣ Create a Virtual Environment
-```bash
-python -m venv venv
-```
-
-### 3️⃣ Activate the Virtual Environment  
-- **Windows**  
-  ```bash
-  venv\Scripts\activate
-  ```
-- **Linux/macOS**  
-  ```bash
-  source venv/bin/activate
-  ```
-
-### 4️⃣ Install Dependencies
-```bash
-pip install -r requirements.txt
-```
-
----
-
 ## Features
 
 - Real-time hand gesture detection and tracking
@@ -83,9 +53,42 @@ This project is in active development. The current focus is on:
 - Expanding the gesture recognition dataset.
 - Enhancing real-time performance.
 
-## Requirements
+## Installation & Setup
 
-To run this project, you need Python 3.9 or higher. Install the necessary dependencies by running:
+### 1️⃣ Clone the Repository
+
+```bash
+
+git clone https://github.com/RhythmusByte/Sign-Language-to-Speech.git
+cd Sign-Language-to-Speech
+
+```
+
+### 2️⃣ Create a Virtual Environment (Recommended)
+
+```bash
+python -m venv venv
+```
+
+### 3️⃣ Activate the Virtual Environment
+
+- **Windows**
+
+  ```bash
+  venv\Scripts\activate
+  ```
+
+- **Linux/macOS**
+
+  ```bash
+  source venv/bin/activate
+  ```
+
+### 4️⃣ Install Dependencies
+
+To run this project, you must need Python 3.9 (Recommended) or higher. Install the necessary dependencies by running:
+
+> This project is created and tested on **Python 3.9**.
 
 ```bash
 pip install -r requirements.txt
@@ -99,7 +102,7 @@ Key packages required:
 - cvzone
 - pyttsx3
 
-## Usage
+### Usage
 
 To run the application, execute the following:
 
