@@ -4,6 +4,36 @@ This project focuses on real-time American Sign Language (ASL) to speech convers
 
 > ⚠️ **Note:** This project is currently under development.
 
+## Installation & Setup
+
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/RhythmusByte/Sign-Language-to-Speech.git
+cd sign-language-to-speech
+```
+
+### 2️⃣ Create a Virtual Environment
+```bash
+python -m venv venv
+```
+
+### 3️⃣ Activate the Virtual Environment  
+- **Windows**  
+  ```bash
+  venv\Scripts\activate
+  ```
+- **Linux/macOS**  
+  ```bash
+  source venv/bin/activate
+  ```
+
+### 4️⃣ Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+---
+
 ## Features
 
 - Real-time hand gesture detection and tracking
@@ -84,5 +114,3 @@ This will launch the gesture recognition system using your webcam or camera devi
 - Expand support for more ASL gestures.
 - Optimize performance for faster recognition.
 - Improve model accuracy with additional training data.
-
----
