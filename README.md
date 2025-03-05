@@ -1,119 +1,116 @@
-# Sign Language to Speech Conversion
+<div align="center">
 
-This project focuses on real-time American Sign Language (ASL) to speech conversion, leveraging OpenCV and TensorFlow/Keras for hand gesture recognition. The application incorporates custom hand tracking, image preprocessing, and gesture classification to translate ASL into both text and speech output, with accessibility in mind.
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Josefin+Sans&pause=1000&color=FF6F00&center=true&vCenter=true&width=435&lines=Sign+Language+to+Speech+Conversion;Real-time+ASL+Recognition+System)](https://github.com/RhythmusByte/Sign-Language-to-Speech)
 
-> ⚠️ **Note:** This project is currently under development.
+<!-- <img src="" alt="Project demonstration" height="200" /> -->
 
-## Features
+[![License](https://img.shields.io/badge/License-BSD_3--Clause-ffd700.svg?style=for-the-badge)](https://opensource.org/licenses/BSD-3-Clause)
+![Status](https://img.shields.io/badge/Status-Active_Development-important?style=for-the-badge&logo=vercel)
 
-- Real-time hand gesture detection and tracking
-- Image preprocessing pipeline
-- Machine learning-based gesture classification
-- Support for basic ASL gestures (letters A-Z)
+</div>
 
-## Technical Stack
+---
 
-- Python 3.9+
-- OpenCV (Computer Vision)
-- TensorFlow/Keras (Machine Learning)
-- cvzone (Hand Tracking)
-- NumPy (Numerical Processing)
-- pyttsx3 (Text-to-Speech)
+## 🎯 Project Overview
+Real-time American Sign Language (ASL) translation system using computer vision and deep learning. Combines custom hand tracking with gesture classification to create accessible communication solutions.
 
-## Project Structure
+> ⚠️ **Development Notice:** Core functionality implemented - refining accuracy and expanding gesture library
 
+---
+
+## ✨ Key Features
+- 🖐 Real-time hand detection & gesture tracking
+- 🧠 CNN-based classification using TensorFlow/Keras
+- 🔊 Simultaneous text & speech output
+
+---
+
+## 🛠 Tech Stack
+### **Core Technologies**
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
+
+### **Supporting Libraries**
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
+![cvzone](https://img.shields.io/badge/cvzone-Community-9cf?style=for-the-badge)
+![pyttsx3](https://img.shields.io/badge/pyttsx3-TTS_Engine-8B0000?style=for-the-badge)
+
+---
+
+## 📂 Repository Structure
 ```text
-project /
-│
-├── data/
-├── Application.py
-├── README.md
-├── requirements.txt
-├── trainedModel.h5
-└── white.jpg
+Sign-Language-to-Speech/
+├── data/                  # Training datasets and gesture samples
+├── Application.py        # Main application logic
+├── trainedModel.h5       # Pretrained CNN model
+├── requirements.txt      # Dependency specifications
+└── white.jpg             # Background reference image
 ```
 
-- **Application.py**: Main Python script that runs the application.
-- **trainedModel.h5**: The trained model for gesture classification.
-- **requirements.txt**: List of dependencies needed to run the project.
-- **white.jpg**: Background image.
+---
 
-## Features in Development
+## 🚀 Installation Guide
 
-- Real-time gesture recognition
-- Image processing pipeline for gesture analysis
-- Gesture classification with TensorFlow/Keras
-- Text and speech output for gesture translation
+### **Prerequisites**
+- Python 3.9+ (Recommended)
+- Webcam-enabled device
+- 4GB+ RAM recommended
 
-## Development Status
+### **Setup Instructions**
+1. Clone repository:
+   ```bash
+   git clone https://github.com/RhythmusByte/Sign-Language-to-Speech.git
+   cd Sign-Language-to-Speech
+   ```
 
-This project is in active development. The current focus is on:
+2. Create virtual environment:
+   ```bash
+   python -m venv .venv
+   ```
 
-- Improving hand tracking accuracy.
-- Expanding the gesture recognition dataset.
-- Enhancing real-time performance.
+3. Activate environment:
+   - Windows: `.venv\Scripts\activate`
+   - Unix/MacOS: `source .venv/bin/activate`
 
-## Installation & Setup
+4. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-### 1️⃣ Clone the Repository
+---
 
-```bash
-
-git clone https://github.com/RhythmusByte/Sign-Language-to-Speech.git
-cd Sign-Language-to-Speech
-
-```
-
-### 2️⃣ Create a Virtual Environment (Recommended)
-
-```bash
-python -m venv venv
-```
-
-### 3️⃣ Activate the Virtual Environment
-
-- **Windows**
-
-  ```bash
-  venv\Scripts\activate
-  ```
-
-- **Linux/macOS**
-
-  ```bash
-  source venv/bin/activate
-  ```
-
-### 4️⃣ Install Dependencies
-
-To run this project, you must need Python 3.9 (Recommended) or higher. Install the necessary dependencies by running:
-
-> This project is created and tested on **Python 3.9**.
-
-```bash
-pip install -r requirements.txt
-```
-
-Key packages required:
-
-- opencv-python
-- tensorflow
-- numpy
-- cvzone
-- pyttsx3
-
-### Usage
-
-To run the application, execute the following:
-
+## 🖥 Usage
+Launch the recognition system:
 ```bash
 python Application.py
 ```
 
-This will launch the gesture recognition system using your webcam or camera device and convert recognized gestures into text and speech output.
+**System Flow:**
+1. Webcam initialization
+2. Hand detection & ROI extraction
+3. Gesture preprocessing & normalization
+4. CNN-based classification
+5. Real-time text & speech output
 
-## Future Improvements
+---
 
-- Expand support for more ASL gestures.
-- Optimize performance for faster recognition.
-- Improve model accuracy with additional training data.
+## 🧭 Development Roadmap
+- [ ] Expand ASL gesture library (A-Z completion)
+- [ ] Implement user-customizable gestures
+- [ ] Optimize for low-power devices
+- [ ] Add multi-hand detection capability
+- [ ] Develop training interface for model updates
+
+---
+
+## 📜 License
+Distributed under BSD 3-Clause License. See `LICENSE` for full text.
+
+---
+
+<div align="center">
+
+[⬆ Back to Top](#sign-language-to-speech-conversion)
+
+</div>
