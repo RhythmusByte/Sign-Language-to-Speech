@@ -2,7 +2,7 @@
 
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Josefin+Sans&pause=1000&color=FF6F00&center=true&vCenter=true&width=435&lines=Sign+Language+to+Speech+Conversion;Real-time+ASL+Recognition+System)](https://github.com/RhythmusByte/Sign-Language-to-Speech)
 
-<!-- <img src="" alt="Project demonstration" height="200" /> -->
+<img src="banner.png" alt="Project demonstration" width="100%"/>
 
 [![License](https://img.shields.io/badge/License-BSD_3--Clause-ffd700.svg?style=for-the-badge)](https://opensource.org/licenses/BSD-3-Clause)
 ![Status](https://img.shields.io/badge/Status-Active_Development-important?style=for-the-badge&logo=vercel)
@@ -106,11 +106,3 @@ python Application.py
 
 ## 📜 License
 Distributed under BSD 3-Clause License. See `LICENSE` for full text.
-
----
-
-<div align="center">
-
-[⬆ Back to Top](#sign-language-to-speech-conversion)
-
-</div>
