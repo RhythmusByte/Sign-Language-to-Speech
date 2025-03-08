@@ -1,11 +1,11 @@
 <div align="center">
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Josefin+Sans&pause=1000&color=FF6F00&center=true&vCenter=true&width=435&lines=Sign+Language+to+Speech+Conversion;Real-time+ASL+Recognition+System)](https://github.com/RhythmusByte/Sign-Language-to-Speech)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Josefin+Sans&pause=1000&color=9D00FF&center=true&vCenter=true&width=435&lines=Sign+Language+to+Speech+Conversion;Real-time+ASL+Recognition+System)](https://github.com/RhythmusByte/Sign-Language-to-Speech)
 
 <img src="banner.png" alt="Project demonstration" width="100%"/>
 
-[![License](https://img.shields.io/badge/License-BSD_3--Clause-ffd700.svg?style=for-the-badge)](https://opensource.org/licenses/BSD-3-Clause)
-![Status](https://img.shields.io/badge/Status-Active_Development-important?style=for-the-badge&logo=vercel)
+[![License](https://img.shields.io/badge/License-BSD_3--Clause-8A2BE2.svg?style=for-the-badge)](https://opensource.org/licenses/BSD-3-Clause)
+![Status](https://img.shields.io/badge/Status-Active_Development-8A2BE2?style=for-the-badge&logo=vercel)
 
 </div>
 
@@ -14,14 +14,26 @@
 ## 🎯 Project Overview
 Real-time American Sign Language (ASL) translation system using computer vision and deep learning. Combines custom hand tracking with gesture classification to create accessible communication solutions.
 
-> ⚠️ **Development Notice:** Core functionality implemented - refining accuracy and expanding gesture library
+> 🔮 **Development Update:** Core functionality implemented - refining accuracy and expanding gesture library
 
 ---
 
 ## ✨ Key Features
-- 🖐 Real-time hand detection & gesture tracking
+- 🔮 Real-time hand detection & gesture tracking
 - 🧠 CNN-based classification using TensorFlow/Keras
 - 🔊 Simultaneous text & speech output
+
+---
+
+## 📊 Project Documentation
+
+### Use Case Diagram
+![Use Case Diagram](Use-Case.png)
+
+### Data Flow Diagrams
+| Level 0 | Level 1 | Level 2 |
+|---------|---------|---------|
+| ![DFD Level 0](DFD_0.png) | ![DFD Level 1](DFD_1.png) | ![DFD Level 2](DFD_2.png) |
 
 ---
 
@@ -29,11 +41,11 @@ Real-time American Sign Language (ASL) translation system using computer vision 
 ### **Core Technologies**
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-9D00FF?style=for-the-badge&logo=tensorflow&logoColor=white)
 
 ### **Supporting Libraries**
 ![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
-![cvzone](https://img.shields.io/badge/cvzone-Community-9cf?style=for-the-badge)
+![cvzone](https://img.shields.io/badge/cvzone-Community-9D00FF?style=for-the-badge)
 ![pyttsx3](https://img.shields.io/badge/pyttsx3-TTS_Engine-8B0000?style=for-the-badge)
 
 ---
@@ -71,7 +83,7 @@ Sign-Language-to-Speech/
 
 3. Activate environment:
    - Windows: `.venv\Scripts\activate`
-   - Unix/MacOS: `source .venv/bin/activate`
+   - Linux/MacOS: `source .venv/bin/activate`
 
 4. Install dependencies:
    ```bash
@@ -95,14 +107,5 @@ python Application.py
 
 ---
 
-## 🧭 Development Roadmap
-- [ ] Expand ASL gesture library (A-Z completion)
-- [ ] Implement user-customizable gestures
-- [ ] Optimize for low-power devices
-- [ ] Add multi-hand detection capability
-- [ ] Develop training interface for model updates
-
----
-
 ## 📜 License
-Distributed under BSD 3-Clause License. See `LICENSE` for full text.
+Distributed under BSD 3-Clause License. See [LICENSE](LICENSE).
