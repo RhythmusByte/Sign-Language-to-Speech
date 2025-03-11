@@ -27,9 +27,6 @@ Real-time American Sign Language (ASL) translation system using computer vision 
 
 ## 📊 Project Documentation
 
-### Use Case Diagram
-![Use Case Diagram](Use-Case.png)
-
 ### Data Flow Diagrams
 | Level 0 | Level 1 | Level 2 |
 |---------|---------|---------|
