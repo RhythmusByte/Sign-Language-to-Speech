@@ -10,6 +10,7 @@ from keras.models import load_model
 from cvzone.HandTrackingModule import HandDetector
 from string import ascii_uppercase
 import enchant
+
 ddd = enchant.Dict("en-US")
 hd = HandDetector(maxHands=1)
 hd2 = HandDetector(maxHands=1)
@@ -19,6 +20,7 @@ from PIL import Image, ImageTk
 # Configuration and Environment Setup
 offset = 29
 os.environ["THEANO_FLAGS"] = "device=cuda, assert_no_cpu_op=True"
+
 
 # Main Application Class
 class Application:
@@ -154,29 +156,39 @@ class Application:
                             os = ((400 - w) // 2) - 15
                             os1 = ((400 - h) // 2) - 15
                             for t in range(0, 4, 1):
-                                cv2.line(white, (self.pts[t][0] + os, self.pts[t][1] + os1), (self.pts[t + 1][0] + os, self.pts[t + 1][1] + os1),
+                                cv2.line(white, (self.pts[t][0] + os, self.pts[t][1] + os1),
+                                         (self.pts[t + 1][0] + os, self.pts[t + 1][1] + os1),
                                          (0, 255, 0), 3)
                             for t in range(5, 8, 1):
-                                cv2.line(white, (self.pts[t][0] + os, self.pts[t][1] + os1), (self.pts[t + 1][0] + os, self.pts[t + 1][1] + os1),
+                                cv2.line(white, (self.pts[t][0] + os, self.pts[t][1] + os1),
+                                         (self.pts[t + 1][0] + os, self.pts[t + 1][1] + os1),
                                          (0, 255, 0), 3)
                             for t in range(9, 12, 1):
-                                cv2.line(white, (self.pts[t][0] + os, self.pts[t][1] + os1), (self.pts[t + 1][0] + os, self.pts[t + 1][1] + os1),
+                                cv2.line(white, (self.pts[t][0] + os, self.pts[t][1] + os1),
+                                         (self.pts[t + 1][0] + os, self.pts[t + 1][1] + os1),
                                          (0, 255, 0), 3)
                             for t in range(13, 16, 1):
-                                cv2.line(white, (self.pts[t][0] + os, self.pts[t][1] + os1), (self.pts[t + 1][0] + os, self.pts[t + 1][1] + os1),
+                                cv2.line(white, (self.pts[t][0] + os, self.pts[t][1] + os1),
+                                         (self.pts[t + 1][0] + os, self.pts[t + 1][1] + os1),
                                          (0, 255, 0), 3)
                             for t in range(17, 20, 1):
-                                cv2.line(white, (self.pts[t][0] + os, self.pts[t][1] + os1), (self.pts[t + 1][0] + os, self.pts[t + 1][1] + os1),
+                                cv2.line(white, (self.pts[t][0] + os, self.pts[t][1] + os1),
+                                         (self.pts[t + 1][0] + os, self.pts[t + 1][1] + os1),
                                          (0, 255, 0), 3)
-                            cv2.line(white, (self.pts[5][0] + os, self.pts[5][1] + os1), (self.pts[9][0] + os, self.pts[9][1] + os1),
+                            cv2.line(white, (self.pts[5][0] + os, self.pts[5][1] + os1),
+                                     (self.pts[9][0] + os, self.pts[9][1] + os1),
                                      (0, 255, 0), 3)
-                            cv2.line(white, (self.pts[9][0] + os, self.pts[9][1] + os1), (self.pts[13][0] + os, self.pts[13][1] + os1),
+                            cv2.line(white, (self.pts[9][0] + os, self.pts[9][1] + os1),
+                                     (self.pts[13][0] + os, self.pts[13][1] + os1),
                                      (0, 255, 0), 3)
-                            cv2.line(white, (self.pts[13][0] + os, self.pts[13][1] + os1), (self.pts[17][0] + os, self.pts[17][1] + os1),
+                            cv2.line(white, (self.pts[13][0] + os, self.pts[13][1] + os1),
+                                     (self.pts[17][0] + os, self.pts[17][1] + os1),
                                      (0, 255, 0), 3)
-                            cv2.line(white, (self.pts[0][0] + os, self.pts[0][1] + os1), (self.pts[5][0] + os, self.pts[5][1] + os1),
+                            cv2.line(white, (self.pts[0][0] + os, self.pts[0][1] + os1),
+                                     (self.pts[5][0] + os, self.pts[5][1] + os1),
                                      (0, 255, 0), 3)
-                            cv2.line(white, (self.pts[0][0] + os, self.pts[0][1] + os1), (self.pts[17][0] + os, self.pts[17][1] + os1),
+                            cv2.line(white, (self.pts[0][0] + os, self.pts[0][1] + os1),
+                                     (self.pts[17][0] + os, self.pts[17][1] + os1),
                                      (0, 255, 0), 3)
 
                             for i in range(21):
@@ -192,10 +204,14 @@ class Application:
                             self.panel2.imgtk = imgtk
                             self.panel2.config(image=imgtk)
                             self.panel3.config(text=self.current_symbol, font=("Josefin Sans", 30))
-                            self.b1.config(text=self.word1, font=("Josefin Sans", 20), wraplength=825, command=self.action1)
-                            self.b2.config(text=self.word2, font=("Josefin Sans", 20), wraplength=825, command=self.action2)
-                            self.b3.config(text=self.word3, font=("Josefin Sans", 20), wraplength=825, command=self.action3)
-                            self.b4.config(text=self.word4, font=("Josefin Sans", 20), wraplength=825, command=self.action4)
+                            self.b1.config(text=self.word1, font=("Josefin Sans", 20), wraplength=825,
+                                           command=self.action1)
+                            self.b2.config(text=self.word2, font=("Josefin Sans", 20), wraplength=825,
+                                           command=self.action2)
+                            self.b3.config(text=self.word3, font=("Josefin Sans", 20), wraplength=825,
+                                           command=self.action3)
+                            self.b4.config(text=self.word4, font=("Josefin Sans", 20), wraplength=825,
+                                           command=self.action4)
 
                 self.panel5.config(text=self.str, font=("Josefin Sans", 30), wraplength=1025)
         except Exception:
@@ -226,29 +242,39 @@ class Application:
                     os = ((400 - w) // 2) - 15
                     os1 = ((400 - h) // 2) - 15
                     for t in range(0, 4, 1):
-                        cv2.line(white, (self.pts[t][0] + os, self.pts[t][1] + os1), (self.pts[t + 1][0] + os, self.pts[t + 1][1] + os1),
+                        cv2.line(white, (self.pts[t][0] + os, self.pts[t][1] + os1),
+                                 (self.pts[t + 1][0] + os, self.pts[t + 1][1] + os1),
                                  (0, 255, 0), 3)
                     for t in range(5, 8, 1):
-                        cv2.line(white, (self.pts[t][0] + os, self.pts[t][1] + os1), (self.pts[t + 1][0] + os, self.pts[t + 1][1] + os1),
+                        cv2.line(white, (self.pts[t][0] + os, self.pts[t][1] + os1),
+                                 (self.pts[t + 1][0] + os, self.pts[t + 1][1] + os1),
                                  (0, 255, 0), 3)
                     for t in range(9, 12, 1):
-                        cv2.line(white, (self.pts[t][0] + os, self.pts[t][1] + os1), (self.pts[t + 1][0] + os, self.pts[t + 1][1] + os1),
+                        cv2.line(white, (self.pts[t][0] + os, self.pts[t][1] + os1),
+                                 (self.pts[t + 1][0] + os, self.pts[t + 1][1] + os1),
                                  (0, 255, 0), 3)
                     for t in range(13, 16, 1):
-                        cv2.line(white, (self.pts[t][0] + os, self.pts[t][1] + os1), (self.pts[t + 1][0] + os, self.pts[t + 1][1] + os1),
+                        cv2.line(white, (self.pts[t][0] + os, self.pts[t][1] + os1),
+                                 (self.pts[t + 1][0] + os, self.pts[t + 1][1] + os1),
                                  (0, 255, 0), 3)
                     for t in range(17, 20, 1):
-                        cv2.line(white, (self.pts[t][0] + os, self.pts[t][1] + os1), (self.pts[t + 1][0] + os, self.pts[t + 1][1] + os1),
+                        cv2.line(white, (self.pts[t][0] + os, self.pts[t][1] + os1),
+                                 (self.pts[t + 1][0] + os, self.pts[t + 1][1] + os1),
                                  (0, 255, 0), 3)
-                    cv2.line(white, (self.pts[5][0] + os, self.pts[5][1] + os1), (self.pts[9][0] + os, self.pts[9][1] + os1), (0, 255, 0),
+                    cv2.line(white, (self.pts[5][0] + os, self.pts[5][1] + os1),
+                             (self.pts[9][0] + os, self.pts[9][1] + os1), (0, 255, 0),
                              3)
-                    cv2.line(white, (self.pts[9][0] + os, self.pts[9][1] + os1), (self.pts[13][0] + os, self.pts[13][1] + os1), (0, 255, 0),
+                    cv2.line(white, (self.pts[9][0] + os, self.pts[9][1] + os1),
+                             (self.pts[13][0] + os, self.pts[13][1] + os1), (0, 255, 0),
                              3)
-                    cv2.line(white, (self.pts[13][0] + os, self.pts[13][1] + os1), (self.pts[17][0] + os, self.pts[17][1] + os1),
+                    cv2.line(white, (self.pts[13][0] + os, self.pts[13][1] + os1),
+                             (self.pts[17][0] + os, self.pts[17][1] + os1),
                              (0, 255, 0), 3)
-                    cv2.line(white, (self.pts[0][0] + os, self.pts[0][1] + os1), (self.pts[5][0] + os, self.pts[5][1] + os1), (0, 255, 0),
+                    cv2.line(white, (self.pts[0][0] + os, self.pts[0][1] + os1),
+                             (self.pts[5][0] + os, self.pts[5][1] + os1), (0, 255, 0),
                              3)
-                    cv2.line(white, (self.pts[0][0] + os, self.pts[0][1] + os1), (self.pts[17][0] + os, self.pts[17][1] + os1), (0, 255, 0),
+                    cv2.line(white, (self.pts[0][0] + os, self.pts[0][1] + os1),
+                             (self.pts[17][0] + os, self.pts[17][1] + os1), (0, 255, 0),
                              3)
 
                     for i in range(21):
@@ -345,7 +371,8 @@ class Application:
              [4, 1], [1, 0], [1, 1], [6, 3], [1, 6], [5, 6], [5, 1], [4, 5], [1, 4], [1, 5], [2, 0], [2, 6], [4, 6],
              [1, 0], [5, 7], [1, 6], [6, 1], [7, 6], [2, 5], [7, 1], [5, 4], [7, 0], [7, 5], [7, 2]]
         if pl in l:
-            if (self.pts[6][1] < self.pts[8][1] and self.pts[10][1] < self.pts[12][1] and self.pts[14][1] < self.pts[16][1] and self.pts[18][1] < self.pts[20][1]):
+            if (self.pts[6][1] < self.pts[8][1] and self.pts[10][1] < self.pts[12][1] and self.pts[14][1] <
+                    self.pts[16][1] and self.pts[18][1] < self.pts[20][1]):
                 ch1 = 0
 
         l = [[2, 2], [2, 1]]
@@ -356,7 +383,9 @@ class Application:
         l = [[0, 0], [0, 6], [0, 2], [0, 5], [0, 1], [0, 7], [5, 2], [7, 6], [7, 1]]
         pl = [ch1, ch2]
         if pl in l:
-            if (self.pts[0][0] > self.pts[8][0] and self.pts[0][0] > self.pts[4][0] and self.pts[0][0] > self.pts[12][0] and self.pts[0][0] > self.pts[16][0] and self.pts[0][0] > self.pts[20][0]) and self.pts[5][0] > self.pts[4][0]:
+            if (self.pts[0][0] > self.pts[8][0] and self.pts[0][0] > self.pts[4][0] and self.pts[0][0] > self.pts[12][
+                0] and self.pts[0][0] > self.pts[16][0] and self.pts[0][0] > self.pts[20][0]) and self.pts[5][0] > \
+                    self.pts[4][0]:
                 ch1 = 2
 
         l = [[6, 0], [6, 6], [6, 2]]
@@ -369,7 +398,9 @@ class Application:
         pl = [ch1, ch2]
 
         if pl in l:
-            if self.pts[6][1] > self.pts[8][1] and self.pts[14][1] < self.pts[16][1] and self.pts[18][1] < self.pts[20][1] and self.pts[0][0] < self.pts[8][0] and self.pts[0][0] < self.pts[12][0] and self.pts[0][0] < self.pts[16][0] and self.pts[0][0] < self.pts[20][0]:
+            if self.pts[6][1] > self.pts[8][1] and self.pts[14][1] < self.pts[16][1] and self.pts[18][1] < self.pts[20][
+                1] and self.pts[0][0] < self.pts[8][0] and self.pts[0][0] < self.pts[12][0] and self.pts[0][0] < \
+                    self.pts[16][0] and self.pts[0][0] < self.pts[20][0]:
                 ch1 = 3
 
         l = [[4, 6], [4, 1], [4, 5], [4, 3], [4, 7]]
@@ -393,7 +424,9 @@ class Application:
         l = [[1, 4], [1, 6], [1, 1]]
         pl = [ch1, ch2]
         if pl in l:
-            if (self.distance(self.pts[4], self.pts[11]) > 50) and (self.pts[6][1] > self.pts[8][1] and self.pts[10][1] < self.pts[12][1] and self.pts[14][1] < self.pts[16][1] and self.pts[18][1] < self.pts[20][1]):
+            if (self.distance(self.pts[4], self.pts[11]) > 50) and (
+                    self.pts[6][1] > self.pts[8][1] and self.pts[10][1] < self.pts[12][1] and self.pts[14][1] <
+                    self.pts[16][1] and self.pts[18][1] < self.pts[20][1]):
                 ch1 = 4
 
         l = [[3, 6], [3, 4]]
@@ -401,7 +434,7 @@ class Application:
         if pl in l:
             if (self.pts[4][0] < self.pts[0][0]):
                 ch1 = 4
-                
+
         l = [[2, 2], [2, 5], [2, 4]]
         pl = [ch1, ch2]
         if pl in l:
@@ -417,13 +450,15 @@ class Application:
         l = [[3, 6], [3, 5], [3, 4]]
         pl = [ch1, ch2]
         if pl in l:
-            if (self.pts[6][1] > self.pts[8][1] and self.pts[10][1] < self.pts[12][1] and self.pts[14][1] < self.pts[16][1] and self.pts[18][1] < self.pts[20][1]) and self.pts[4][1] > self.pts[10][1]:
+            if (self.pts[6][1] > self.pts[8][1] and self.pts[10][1] < self.pts[12][1] and self.pts[14][1] <
+                self.pts[16][1] and self.pts[18][1] < self.pts[20][1]) and self.pts[4][1] > self.pts[10][1]:
                 ch1 = 5
 
         l = [[3, 2], [3, 1], [3, 6]]
         pl = [ch1, ch2]
         if pl in l:
-            if self.pts[4][1] + 17 > self.pts[8][1] and self.pts[4][1] + 17 > self.pts[12][1] and self.pts[4][1] + 17 > self.pts[16][1] and self.pts[4][1] + 17 > self.pts[20][1]:
+            if self.pts[4][1] + 17 > self.pts[8][1] and self.pts[4][1] + 17 > self.pts[12][1] and self.pts[4][1] + 17 > \
+                    self.pts[16][1] and self.pts[4][1] + 17 > self.pts[20][1]:
                 ch1 = 5
 
         l = [[4, 4], [4, 5], [4, 2], [7, 5], [7, 6], [7, 0]]
@@ -435,7 +470,8 @@ class Application:
         l = [[0, 2], [0, 6], [0, 1], [0, 5], [0, 0], [0, 7], [0, 4], [0, 3], [2, 7]]
         pl = [ch1, ch2]
         if pl in l:
-            if self.pts[0][0] < self.pts[8][0] and self.pts[0][0] < self.pts[12][0] and self.pts[0][0] < self.pts[16][0] and self.pts[0][0] < self.pts[20][0]:
+            if self.pts[0][0] < self.pts[8][0] and self.pts[0][0] < self.pts[12][0] and self.pts[0][0] < self.pts[16][
+                0] and self.pts[0][0] < self.pts[20][0]:
                 ch1 = 5
 
         l = [[5, 7], [5, 2], [5, 6]]
@@ -491,14 +527,16 @@ class Application:
              [6, 3], [6, 4], [7, 5], [7, 2]]
         pl = [ch1, ch2]
         if pl in l:
-            if (self.pts[6][1] > self.pts[8][1] and self.pts[10][1] > self.pts[12][1] and self.pts[14][1] > self.pts[16][1] and self.pts[18][1] > self.pts[20][1]):
+            if (self.pts[6][1] > self.pts[8][1] and self.pts[10][1] > self.pts[12][1] and self.pts[14][1] >
+                    self.pts[16][1] and self.pts[18][1] > self.pts[20][1]):
                 ch1 = 1
 
         l = [[6, 1], [6, 0], [0, 3], [6, 4], [2, 2], [0, 6], [6, 2], [7, 6], [4, 6], [4, 1], [4, 2], [0, 2], [7, 1],
              [7, 4], [6, 6], [7, 2], [7, 5], [7, 2]]
         pl = [ch1, ch2]
         if pl in l:
-            if (self.pts[6][1] < self.pts[8][1] and self.pts[10][1] > self.pts[12][1] and self.pts[14][1] > self.pts[16][1] and
+            if (self.pts[6][1] < self.pts[8][1] and self.pts[10][1] > self.pts[12][1] and self.pts[14][1] >
+                    self.pts[16][1] and
                     self.pts[18][1] > self.pts[20][1]):
                 ch1 = 1
 
@@ -513,23 +551,28 @@ class Application:
         l = [[5, 0], [3, 4], [3, 0], [3, 1], [3, 5], [5, 5], [5, 4], [5, 1], [7, 6]]
         pl = [ch1, ch2]
         if pl in l:
-            if ((self.pts[6][1] > self.pts[8][1] and self.pts[10][1] < self.pts[12][1] and self.pts[14][1] < self.pts[16][1] and
-                 self.pts[18][1] < self.pts[20][1]) and (self.pts[2][0] < self.pts[0][0]) and self.pts[4][1] > self.pts[14][1]):
+            if ((self.pts[6][1] > self.pts[8][1] and self.pts[10][1] < self.pts[12][1] and self.pts[14][1] <
+                 self.pts[16][1] and
+                 self.pts[18][1] < self.pts[20][1]) and (self.pts[2][0] < self.pts[0][0]) and self.pts[4][1] >
+                    self.pts[14][1]):
                 ch1 = 1
 
         l = [[4, 1], [4, 2], [4, 4]]
         pl = [ch1, ch2]
         if pl in l:
             if (self.distance(self.pts[4], self.pts[11]) < 50) and (
-                    self.pts[6][1] > self.pts[8][1] and self.pts[10][1] < self.pts[12][1] and self.pts[14][1] < self.pts[16][1] and self.pts[18][1] <
+                    self.pts[6][1] > self.pts[8][1] and self.pts[10][1] < self.pts[12][1] and self.pts[14][1] <
+                    self.pts[16][1] and self.pts[18][1] <
                     self.pts[20][1]):
                 ch1 = 1
 
         l = [[3, 4], [3, 0], [3, 1], [3, 5], [3, 6]]
         pl = [ch1, ch2]
         if pl in l:
-            if ((self.pts[6][1] > self.pts[8][1] and self.pts[10][1] < self.pts[12][1] and self.pts[14][1] < self.pts[16][1] and
-                 self.pts[18][1] < self.pts[20][1]) and (self.pts[2][0] < self.pts[0][0]) and self.pts[14][1] < self.pts[4][1]):
+            if ((self.pts[6][1] > self.pts[8][1] and self.pts[10][1] < self.pts[12][1] and self.pts[14][1] <
+                 self.pts[16][1] and
+                 self.pts[18][1] < self.pts[20][1]) and (self.pts[2][0] < self.pts[0][0]) and self.pts[14][1] <
+                    self.pts[4][1]):
                 ch1 = 1
 
         l = [[6, 6], [6, 4], [6, 1], [6, 2]]
@@ -541,7 +584,8 @@ class Application:
         l = [[5, 4], [5, 5], [5, 1], [0, 3], [0, 7], [5, 0], [0, 2], [6, 2], [7, 5], [7, 1], [7, 6], [7, 7]]
         pl = [ch1, ch2]
         if pl in l:
-            if ((self.pts[6][1] < self.pts[8][1] and self.pts[10][1] < self.pts[12][1] and self.pts[14][1] < self.pts[16][1] and
+            if ((self.pts[6][1] < self.pts[8][1] and self.pts[10][1] < self.pts[12][1] and self.pts[14][1] <
+                 self.pts[16][1] and
                  self.pts[18][1] > self.pts[20][1])):
                 ch1 = 1
 
@@ -549,14 +593,16 @@ class Application:
         pl = [ch1, ch2]
         if pl in l:
             if (self.pts[4][0] < self.pts[5][0] + 15) and (
-            (self.pts[6][1] < self.pts[8][1] and self.pts[10][1] < self.pts[12][1] and self.pts[14][1] < self.pts[16][1] and
-             self.pts[18][1] > self.pts[20][1])):
+                    (self.pts[6][1] < self.pts[8][1] and self.pts[10][1] < self.pts[12][1] and self.pts[14][1] <
+                     self.pts[16][1] and
+                     self.pts[18][1] > self.pts[20][1])):
                 ch1 = 7
 
         l = [[5, 5], [5, 0], [5, 4], [5, 1], [4, 6], [4, 1], [7, 6], [3, 0], [3, 5]]
         pl = [ch1, ch2]
         if pl in l:
-            if ((self.pts[6][1] > self.pts[8][1] and self.pts[10][1] > self.pts[12][1] and self.pts[14][1] < self.pts[16][1] and
+            if ((self.pts[6][1] > self.pts[8][1] and self.pts[10][1] > self.pts[12][1] and self.pts[14][1] <
+                 self.pts[16][1] and
                  self.pts[18][1] < self.pts[20][1])) and self.pts[4][1] > self.pts[14][1]:
                 ch1 = 1
 
@@ -564,28 +610,38 @@ class Application:
         l = [[3, 5], [3, 0], [3, 6], [5, 1], [4, 1], [2, 0], [5, 0], [5, 5]]
         pl = [ch1, ch2]
         if pl in l:
-            if not (self.pts[0][0] + fg < self.pts[8][0] and self.pts[0][0] + fg < self.pts[12][0] and self.pts[0][0] + fg < self.pts[16][0] and
+            if not (self.pts[0][0] + fg < self.pts[8][0] and self.pts[0][0] + fg < self.pts[12][0] and self.pts[0][
+                0] + fg < self.pts[16][0] and
                     self.pts[0][0] + fg < self.pts[20][0]) and not (
-                    self.pts[0][0] > self.pts[8][0] and self.pts[0][0] > self.pts[12][0] and self.pts[0][0] > self.pts[16][0] and self.pts[0][0] > self.pts[20][0]) and self.distance(self.pts[4], self.pts[11]) < 50:
+                    self.pts[0][0] > self.pts[8][0] and self.pts[0][0] > self.pts[12][0] and self.pts[0][0] >
+                    self.pts[16][0] and self.pts[0][0] > self.pts[20][0]) and self.distance(self.pts[4],
+                                                                                            self.pts[11]) < 50:
                 ch1 = 1
 
         l = [[5, 0], [5, 5], [0, 1]]
         pl = [ch1, ch2]
         if pl in l:
-            if self.pts[6][1] > self.pts[8][1] and self.pts[10][1] > self.pts[12][1] and self.pts[14][1] > self.pts[16][1]:
+            if self.pts[6][1] > self.pts[8][1] and self.pts[10][1] > self.pts[12][1] and self.pts[14][1] > self.pts[16][
+                1]:
                 ch1 = 1
 
         if ch1 == 0:
             ch1 = 'S'
-            if self.pts[4][0] < self.pts[6][0] and self.pts[4][0] < self.pts[10][0] and self.pts[4][0] < self.pts[14][0] and self.pts[4][0] < self.pts[18][0]:
+            if self.pts[4][0] < self.pts[6][0] and self.pts[4][0] < self.pts[10][0] and self.pts[4][0] < self.pts[14][
+                0] and self.pts[4][0] < self.pts[18][0]:
                 ch1 = 'A'
-            if self.pts[4][0] > self.pts[6][0] and self.pts[4][0] < self.pts[10][0] and self.pts[4][0] < self.pts[14][0] and self.pts[4][0] < self.pts[18][0] and self.pts[4][1] < self.pts[14][1] and self.pts[4][1] < self.pts[18][1]:
+            if self.pts[4][0] > self.pts[6][0] and self.pts[4][0] < self.pts[10][0] and self.pts[4][0] < self.pts[14][
+                0] and self.pts[4][0] < self.pts[18][0] and self.pts[4][1] < self.pts[14][1] and self.pts[4][1] < \
+                    self.pts[18][1]:
                 ch1 = 'T'
-            if self.pts[4][1] > self.pts[8][1] and self.pts[4][1] > self.pts[12][1] and self.pts[4][1] > self.pts[16][1] and self.pts[4][1] > self.pts[20][1]:
+            if self.pts[4][1] > self.pts[8][1] and self.pts[4][1] > self.pts[12][1] and self.pts[4][1] > self.pts[16][
+                1] and self.pts[4][1] > self.pts[20][1]:
                 ch1 = 'E'
-            if self.pts[4][0] > self.pts[6][0] and self.pts[4][0] > self.pts[10][0] and self.pts[4][0] > self.pts[14][0] and self.pts[4][1] < self.pts[18][1]:
+            if self.pts[4][0] > self.pts[6][0] and self.pts[4][0] > self.pts[10][0] and self.pts[4][0] > self.pts[14][
+                0] and self.pts[4][1] < self.pts[18][1]:
                 ch1 = 'M'
-            if self.pts[4][0] > self.pts[6][0] and self.pts[4][0] > self.pts[10][0] and self.pts[4][1] < self.pts[18][1] and self.pts[4][1] < self.pts[14][1]:
+            if self.pts[4][0] > self.pts[6][0] and self.pts[4][0] > self.pts[10][0] and self.pts[4][1] < self.pts[18][
+                1] and self.pts[4][1] < self.pts[14][1]:
                 ch1 = 'N'
 
         if ch1 == 2:
@@ -613,7 +669,8 @@ class Application:
             ch1 = 'X'
 
         if ch1 == 5:
-            if self.pts[4][0] > self.pts[12][0] and self.pts[4][0] > self.pts[16][0] and self.pts[4][0] > self.pts[20][0]:
+            if self.pts[4][0] > self.pts[12][0] and self.pts[4][0] > self.pts[16][0] and self.pts[4][0] > self.pts[20][
+                0]:
                 if self.pts[8][1] < self.pts[5][1]:
                     ch1 = 'Z'
                 else:
@@ -622,43 +679,60 @@ class Application:
                 ch1 = 'P'
 
         if ch1 == 1:
-            if (self.pts[6][1] > self.pts[8][1] and self.pts[10][1] > self.pts[12][1] and self.pts[14][1] > self.pts[16][1] and self.pts[18][1] > self.pts[20][1]):
+            if (self.pts[6][1] > self.pts[8][1] and self.pts[10][1] > self.pts[12][1] and self.pts[14][1] >
+                    self.pts[16][1] and self.pts[18][1] > self.pts[20][1]):
                 ch1 = 'B'
-            if (self.pts[6][1] > self.pts[8][1] and self.pts[10][1] < self.pts[12][1] and self.pts[14][1] < self.pts[16][1] and self.pts[18][1] < self.pts[20][1]):
+            if (self.pts[6][1] > self.pts[8][1] and self.pts[10][1] < self.pts[12][1] and self.pts[14][1] <
+                    self.pts[16][1] and self.pts[18][1] < self.pts[20][1]):
                 ch1 = 'D'
-            if (self.pts[6][1] < self.pts[8][1] and self.pts[10][1] > self.pts[12][1] and self.pts[14][1] > self.pts[16][1] and self.pts[18][1] > self.pts[20][1]):
+            if (self.pts[6][1] < self.pts[8][1] and self.pts[10][1] > self.pts[12][1] and self.pts[14][1] >
+                    self.pts[16][1] and self.pts[18][1] > self.pts[20][1]):
                 ch1 = 'F'
-            if (self.pts[6][1] < self.pts[8][1] and self.pts[10][1] < self.pts[12][1] and self.pts[14][1] < self.pts[16][1] and self.pts[18][1] > self.pts[20][1]):
+            if (self.pts[6][1] < self.pts[8][1] and self.pts[10][1] < self.pts[12][1] and self.pts[14][1] <
+                    self.pts[16][1] and self.pts[18][1] > self.pts[20][1]):
                 ch1 = 'I'
-            if (self.pts[6][1] > self.pts[8][1] and self.pts[10][1] > self.pts[12][1] and self.pts[14][1] > self.pts[16][1] and self.pts[18][1] < self.pts[20][1]):
+            if (self.pts[6][1] > self.pts[8][1] and self.pts[10][1] > self.pts[12][1] and self.pts[14][1] >
+                    self.pts[16][1] and self.pts[18][1] < self.pts[20][1]):
                 ch1 = 'W'
-            if (self.pts[6][1] > self.pts[8][1] and self.pts[10][1] > self.pts[12][1] and self.pts[14][1] < self.pts[16][1] and self.pts[18][1] < self.pts[20][1]) and self.pts[4][1] < self.pts[9][1]:
+            if (self.pts[6][1] > self.pts[8][1] and self.pts[10][1] > self.pts[12][1] and self.pts[14][1] <
+                self.pts[16][1] and self.pts[18][1] < self.pts[20][1]) and self.pts[4][1] < self.pts[9][1]:
                 ch1 = 'K'
             if ((self.distance(self.pts[8], self.pts[12]) - self.distance(self.pts[6], self.pts[10])) < 8) and (
-                    self.pts[6][1] > self.pts[8][1] and self.pts[10][1] > self.pts[12][1] and self.pts[14][1] < self.pts[16][1] and self.pts[18][1] <
+                    self.pts[6][1] > self.pts[8][1] and self.pts[10][1] > self.pts[12][1] and self.pts[14][1] <
+                    self.pts[16][1] and self.pts[18][1] <
                     self.pts[20][1]):
                 ch1 = 'U'
             if ((self.distance(self.pts[8], self.pts[12]) - self.distance(self.pts[6], self.pts[10])) >= 8) and (
-                    self.pts[6][1] > self.pts[8][1] and self.pts[10][1] > self.pts[12][1] and self.pts[14][1] < self.pts[16][1] and self.pts[18][1] <
+                    self.pts[6][1] > self.pts[8][1] and self.pts[10][1] > self.pts[12][1] and self.pts[14][1] <
+                    self.pts[16][1] and self.pts[18][1] <
                     self.pts[20][1]) and (self.pts[4][1] > self.pts[9][1]):
                 ch1 = 'V'
 
             if (self.pts[8][0] > self.pts[12][0]) and (
-                    self.pts[6][1] > self.pts[8][1] and self.pts[10][1] > self.pts[12][1] and self.pts[14][1] < self.pts[16][1] and self.pts[18][1] <
+                    self.pts[6][1] > self.pts[8][1] and self.pts[10][1] > self.pts[12][1] and self.pts[14][1] <
+                    self.pts[16][1] and self.pts[18][1] <
                     self.pts[20][1]):
                 ch1 = 'R'
 
         if ch1 == 1 or ch1 == 'E' or ch1 == 'S' or ch1 == 'X' or ch1 == 'Y' or ch1 == 'B':
-            if (self.pts[6][1] > self.pts[8][1] and self.pts[10][1] < self.pts[12][1] and self.pts[14][1] < self.pts[16][1] and self.pts[18][1] > self.pts[20][1]):
+            if (self.pts[6][1] > self.pts[8][1] and self.pts[10][1] < self.pts[12][1] and self.pts[14][1] <
+                    self.pts[16][1] and self.pts[18][1] > self.pts[20][1]):
                 ch1 = " "
 
         print(self.pts[4][0] < self.pts[5][0])
         if ch1 == 'E' or ch1 == 'Y' or ch1 == 'B':
-            if (self.pts[4][0] < self.pts[5][0]) and (self.pts[6][1] > self.pts[8][1] and self.pts[10][1] > self.pts[12][1] and self.pts[14][1] > self.pts[16][1] and self.pts[18][1] > self.pts[20][1]):
+            if (self.pts[4][0] < self.pts[5][0]) and (
+                    self.pts[6][1] > self.pts[8][1] and self.pts[10][1] > self.pts[12][1] and self.pts[14][1] >
+                    self.pts[16][1] and self.pts[18][1] > self.pts[20][1]):
                 ch1 = "next"
 
         if ch1 == 'Next' or 'B' or 'C' or 'H' or 'F' or 'X':
-            if (self.pts[0][0] > self.pts[8][0] and self.pts[0][0] > self.pts[12][0] and self.pts[0][0] > self.pts[16][0] and self.pts[0][0] > self.pts[20][0]) and (self.pts[4][1] < self.pts[8][1] and self.pts[4][1] < self.pts[12][1] and self.pts[4][1] < self.pts[16][1] and self.pts[4][1] < self.pts[20][1]) and (self.pts[4][1] < self.pts[6][1] and self.pts[4][1] < self.pts[10][1] and self.pts[4][1] < self.pts[14][1] and self.pts[4][1] < self.pts[18][1]):
+            if (self.pts[0][0] > self.pts[8][0] and self.pts[0][0] > self.pts[12][0] and self.pts[0][0] > self.pts[16][
+                0] and self.pts[0][0] > self.pts[20][0]) and (
+                    self.pts[4][1] < self.pts[8][1] and self.pts[4][1] < self.pts[12][1] and self.pts[4][1] <
+                    self.pts[16][1] and self.pts[4][1] < self.pts[20][1]) and (
+                    self.pts[4][1] < self.pts[6][1] and self.pts[4][1] < self.pts[10][1] and self.pts[4][1] <
+                    self.pts[14][1] and self.pts[4][1] < self.pts[18][1]):
                 ch1 = 'Backspace'
 
         if ch1 == "next" and self.prev_char != "next":
@@ -711,6 +785,7 @@ class Application:
         self.root.destroy()
         self.vs.release()
         cv2.destroyAllWindows()
+
 
 # Start the Application
 print("Starting Application...")
