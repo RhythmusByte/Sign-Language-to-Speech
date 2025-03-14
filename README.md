@@ -11,6 +11,8 @@
 
 ---
 
+> <!--HALTED-DAYS-->🔮 Project Status: Development Temporarily Suspended – 0 Days Elapsed<!--HALTED-DAYS-->
+
 ## 🎯 Project Overview  
 **Sign Language to Speech Conversion** is a real-time **American Sign Language (ASL) recognition system** powered by **computer vision** and **deep learning**. It translates ASL hand gestures into **both text and speech output**, enhancing accessibility and communication.  
 
