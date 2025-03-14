@@ -32,7 +32,7 @@
 |---------|---------|---------|
 | ![DFD Level 0](DFD_0.png) | ![DFD Level 1](DFD_1.png) | ![DFD Level 2](DFD_2.png) |
 
-For details on **Data Flow Diagrams (DFD), Use Case Diagrams, and System Design**, check the **[Architecture Section](https://github.com/RhythmusByte/Sign-Language-to-Speech/wiki/System-Architecture-and-Design)** in the Wiki.  
+For details on **Data Flow Diagrams (DFD), Use Case Diagrams, and System Design**, check the **[Architecture Section](https://github.com/RhythmusByte/Sign-Language-to-Speech/wiki/System-Architecture-&-Design)** in the Wiki.  
 
 ---
 
@@ -67,7 +67,7 @@ For a **detailed breakdown of modules and system design**, refer to the **[Proje
 
 ## 📢 Contributing  
 
-We welcome contributions! Before submitting a pull request, please check out the **[Contributing Guide](https://github.com/RhythmusByte/Sign-Language-to-Speech/wiki/Contributing)**.  
+We welcome contributions! Before submitting a pull request, please check out the **[Contributing Guide](https://github.com/RhythmusByte/Sign-Language-to-Speech/wiki/Contributions)**.  
 
 ---
 
