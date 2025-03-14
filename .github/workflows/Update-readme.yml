@@ -1,0 +1,40 @@
+name: Update README - Development Suspended Counter
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs daily at midnight UTC
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Calculate halted days and update README
+        run: |
+          # Set the date when development was suspended (YYYY-MM-DD)
+          HALT_DATE="2025-03-13"  # Adjust this date as needed
+          CURRENT_DATE=$(date +%Y-%m-%d)
+          # Calculate the difference in days
+          DAYS=$(( ( $(date -d "$CURRENT_DATE" +%s) - $(date -d "$HALT_DATE" +%s) )/(60*60*24) ))
+          echo "Calculated halted days: $DAYS"
+          
+          # Replace the marker text in README.md with the updated counter
+          sed -i "s/<!--HALTED-DAYS-->.*<!--HALTED-DAYS-->/<!--HALTED-DAYS-->🔮 Project Status: Development Temporarily Suspended – $DAYS Days Elapsed<!--HALTED-DAYS-->/" README.md
+          echo "Updated README.md content:"
+          cat README.md
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "rhythmusbyte"
+          git config user.email "akhilmahesh@proton.me"
+          git add README.md
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "docs(update-readme): update README with $DAYS days elapsed"
+            git push
+          else
+            echo "No changes detected."
+          fi
