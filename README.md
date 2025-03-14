@@ -12,29 +12,38 @@
 ---
 
 ## 🎯 Project Overview
-Real-time American Sign Language (ASL) translation system using computer vision and deep learning. Combines custom hand tracking with gesture classification to create accessible communication solutions.
+**Sign Language to Speech Conversion** is a real-time **American Sign Language (ASL) recognition system** powered by **computer vision** and **deep learning**. It translates ASL hand gestures into **both text and speech output**, enhancing accessibility and communication.
 
-> 🔮 **Development Update:** Core functionality implemented - refining accuracy and expanding gesture library
+> 🔮 **Development Update:** Core functionality implemented – refining accuracy and expanding the gesture library.
 
 ---
 
 ## ✨ Key Features
-- 🔮 Real-time hand detection & gesture tracking
-- 🧠 CNN-based classification using TensorFlow/Keras
-- 🔊 Simultaneous text & speech output
+- 🔮 **Real-time** hand detection & gesture tracking  
+- 🧠 **CNN-based** classification using TensorFlow/Keras  
+- 🔊 Simultaneous **text & speech** output  
+- 📢 Designed for **accessibility & inclusivity**  
 
 ---
 
-## 📊 Project Documentation
+## 📖 Full Documentation  
 
-### Data Flow Diagrams
+For **detailed setup instructions, architecture, installation guide, and troubleshooting**, visit the [Project Wiki](https://github.com/RhythmusByte/Sign-Language-to-Speech/wiki).  
+
+---
+
+## 📊 System Architecture  
+
 | Level 0 | Level 1 | Level 2 |
 |---------|---------|---------|
 | ![DFD Level 0](DFD_0.png) | ![DFD Level 1](DFD_1.png) | ![DFD Level 2](DFD_2.png) |
 
+For a full breakdown of the **Data Flow Diagrams (DFD), Use Case Diagrams, and System Design**, refer to the [Architecture Section](https://github.com/RhythmusByte/Sign-Language-to-Speech/wiki/System-Architecture-and-Design) in the Wiki.
+
 ---
 
-## 🛠 Tech Stack
+## 🛠 Tech Stack  
+
 ### **Core Technologies**
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)
@@ -47,62 +56,32 @@ Real-time American Sign Language (ASL) translation system using computer vision 
 
 ---
 
-## 📂 Repository Structure
+## 📂 Repository Structure  
+
 ```text
 Sign-Language-to-Speech/
-├── data/                  # Training datasets and gesture samples
-├── Application.py        # Main application logic
-├── trainedModel.h5       # Pretrained CNN model
-├── requirements.txt      # Dependency specifications
-└── white.jpg             # Background reference image
+├── data/                 
+├── Application.py        
+├── trainedModel.h5       
+├── requirements.txt      
+└── white.jpg             
 ```
 
----
-
-## 🚀 Installation Guide
-
-### **Prerequisites**
-- Python 3.9+ (Recommended)
-- Webcam-enabled device
-- 4GB+ RAM recommended
-
-### **Setup Instructions**
-1. Clone repository:
-   ```bash
-   git clone https://github.com/RhythmusByte/Sign-Language-to-Speech.git
-   cd Sign-Language-to-Speech
-   ```
-
-2. Create virtual environment:
-   ```bash
-   python -m venv .venv
-   ```
-
-3. Activate environment:
-   - Windows: `.venv\Scripts\activate`
-   - Linux/MacOS: `source .venv/bin/activate`
-
-4. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+For a **detailed breakdown of modules and system design**, refer to the [Project Documentation](https://github.com/RhythmusByte/Sign-Language-to-Speech/wiki).
 
 ---
 
-## 🖥 Usage
-Launch the recognition system:
-```bash
-python Application.py
-```
+## 📢 Contributing  
 
-**System Flow:**
-1. Webcam initialization
-2. Hand detection & ROI extraction
-3. Gesture preprocessing & normalization
-4. CNN-based classification
-5. Real-time text & speech output
+We welcome contributions! Before submitting a pull request, please check out the **[Contributing Guide](https://github.com/RhythmusByte/Sign-Language-to-Speech/wiki/Contributing)** in the Wiki.
 
 ---
 
-## 📜 License
-Distributed under BSD 3-Clause License. See [LICENSE](LICENSE).
+## 📜 License  
+
+This project is licensed under the **BSD 3-Clause License**. See the full details in the [LICENSE](LICENSE) file.
+
+---
+
+📌 **Go to the Wiki:**  
+📖 **[Sign Language to Speech Wiki](https://github.com/RhythmusByte/Sign-Language-to-Speech/wiki)**  
