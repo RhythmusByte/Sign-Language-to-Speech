@@ -2,7 +2,7 @@ name: Update README - Development Suspended Counter
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '29 10 * * *'
   workflow_dispatch:
 
 permissions:
@@ -13,31 +13,39 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-      - name: Calculate halted days and update README
+      - name: Calculate Elapsed Days and Update README
         run: |
-          # Set the date when development was suspended (YYYY-MM-DD)
-          HALT_DATE="2025-03-13"  # Adjust this date as needed
-          CURRENT_DATE=$(date +%Y-%m-%d)
-          # Calculate the difference in days
-          DAYS=$(( ( $(date -d "$CURRENT_DATE" +%s) - $(date -d "$HALT_DATE" +%s) )/(60*60*24) ))
-          echo "Calculated halted days: $DAYS"
+          # Determine if external commits are present
+          LAST_WORKFLOW_COMMIT=$(git log --grep="docs(update-readme): update README" -n 1 --format=%H)
+          CURRENT_COMMIT=$(git rev-parse HEAD)
           
-          # Replace the marker text in README.md with the updated counter
+          if [ "$CURRENT_COMMIT" != "$LAST_WORKFLOW_COMMIT" ]; then
+            DAYS=0
+            echo "External commits detected. Setting elapsed days to 0."
+          else
+            HALT_DATE="2025-03-19"
+            CURRENT_DATE=$(date +%Y-%m-%d)
+            DAYS=$(( ( $(date -d "$CURRENT_DATE" +%s) - $(date -d "$HALT_DATE" +%s) )/(60*60*24) ))
+            echo "Calculated elapsed days: $DAYS"
+          fi
+          
           sed -i "s/<!--HALTED-DAYS-->.*<!--HALTED-DAYS-->/<!--HALTED-DAYS-->🔮 Project Status: Development Temporarily Suspended – $DAYS Days Elapsed<!--HALTED-DAYS-->/" README.md
           echo "Updated README.md content:"
           cat README.md
 
-      - name: Commit and push changes
+      - name: Commit and Push Changes
         run: |
           git config user.name "rhythmusbyte"
           git config user.email "akhilmahesh@proton.me"
           git add README.md
           if [ -n "$(git status --porcelain)" ]; then
             git commit -m "docs(update-readme): update README with $DAYS days elapsed"
-            git push
+            git push --force
           else
             echo "No changes detected."
           fi
