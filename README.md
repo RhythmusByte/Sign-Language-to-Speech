@@ -69,6 +69,8 @@ For a **detailed breakdown of modules and system design**, refer to the **[Proje
 
 We welcome contributions! Before submitting a pull request, please check out the **[Contributing Guide](https://github.com/RhythmusByte/Sign-Language-to-Speech/wiki/Contributions)**.  
 
+But before that we would like to let you know that this project is not created by me and full credits goes to [Devansh-47](github.com/Devansh-47) and this repo is only a well documented version of his project. 
+
 ---
 
 ## 📜 License  
