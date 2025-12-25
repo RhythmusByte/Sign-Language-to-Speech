@@ -65,6 +65,10 @@ For a **detailed breakdown of modules and system design**, refer to the **[Proje
 
 ---
 
+## 🌟 Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=rhythmusbyte/sign-language-to-speech&type=date&legend=top-left)](https://www.star-history.com/#rhythmusbyte/sign-language-to-speech&type=date&legend=top-left)
+
 ## 📢 Contributing  
 
 We welcome contributions! Before submitting a pull request, please check out the **[Contributing Guide](https://github.com/RhythmusByte/Sign-Language-to-Speech/wiki/Contributions)**.  
