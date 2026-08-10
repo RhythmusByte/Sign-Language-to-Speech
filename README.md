@@ -67,7 +67,13 @@ For a **detailed breakdown of modules and system design**, refer to the **[Proje
 
 ## 🌟 Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=rhythmusbyte/sign-language-to-speech&type=date&legend=top-left)](https://www.star-history.com/#rhythmusbyte/sign-language-to-speech&type=date&legend=top-left)
+<a href="https://www.star-history.com/?repos=rhythmusbyte%2Fsign-language-to-speech&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=rhythmusbyte/sign-language-to-speech&type=date&theme=dark&legend=top-left&sealed_token=6SUypaKaJdvTTTB_ZOflv-mKvxdxEX9MnslnnWVxzE4Op1L5arD5_LgQK6MM-3T-dw2gYL6UKnoxJkIhS-MYSYl9GWaQTdkpIALC06xoHuqj8rCuEiA3G3fBTEtz94drh98-mbUc8Og_mNuwsHkzAxKf77lwS-wMKrby20hTS1Y2ZMOwi1n_YMOwGpgT" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=rhythmusbyte/sign-language-to-speech&type=date&legend=top-left&sealed_token=6SUypaKaJdvTTTB_ZOflv-mKvxdxEX9MnslnnWVxzE4Op1L5arD5_LgQK6MM-3T-dw2gYL6UKnoxJkIhS-MYSYl9GWaQTdkpIALC06xoHuqj8rCuEiA3G3fBTEtz94drh98-mbUc8Og_mNuwsHkzAxKf77lwS-wMKrby20hTS1Y2ZMOwi1n_YMOwGpgT" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=rhythmusbyte/sign-language-to-speech&type=date&legend=top-left&sealed_token=6SUypaKaJdvTTTB_ZOflv-mKvxdxEX9MnslnnWVxzE4Op1L5arD5_LgQK6MM-3T-dw2gYL6UKnoxJkIhS-MYSYl9GWaQTdkpIALC06xoHuqj8rCuEiA3G3fBTEtz94drh98-mbUc8Og_mNuwsHkzAxKf77lwS-wMKrby20hTS1Y2ZMOwi1n_YMOwGpgT" />
+ </picture>
+</a>
 
 ## 📢 Contributing  
 
