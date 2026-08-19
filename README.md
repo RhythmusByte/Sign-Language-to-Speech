@@ -88,3 +88,5 @@ This project is licensed under the **BSD 3-Clause License**. See the full detail
 ---
 
 📌 **For all documentation, including installation, setup, and FAQs, visit the** 👉 **[Project Wiki](https://github.com/RhythmusByte/Sign-Language-to-Speech/wiki)**.  
+
+> Created by RhythmusByte, Musthahsina, Safvan, Sanooj K
